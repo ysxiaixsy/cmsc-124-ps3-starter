@@ -12,8 +12,10 @@ wrongly. Say what you predicted, what CLISP printed, and which rule you
 misread. Those entries belong in the correction commits.
 
 ## P01
-Replace this line with the rule behind this case's four fields.
-
+Value: 7 since we evaluate the 2 * 3 before adding 1
+Kind: Integer, since it returns a number
+Length: 1, since 1 item is returned
+Operator: function, since its a cons
 ## P02
 Replace this line with the rule behind this case's four fields.
 
