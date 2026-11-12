@@ -65,8 +65,11 @@ ENV, because the caller keeps using it after the extension goes out of scope."
 
 Every init is evaluated in ENV before any name is bound, so the bindings happen
 in parallel and an init cannot see a name the same LET introduces."
-  (declare (ignore expr env))
-  (error "eval-let is not implemented"))
+    (let* ((bindings (second expr))                     ; ((x 1) (y 2))
+         (names    (mapcar #'first bindings))         ; (x y)
+         (vals     (eval-operands (mapcar #'second bindings) env))
+         (body     (third expr)))
+      (eval-expr body (extend-env names vals env))))
 
 ;;; E4 -- lambda and application.
 
