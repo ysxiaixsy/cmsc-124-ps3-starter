@@ -50,6 +50,10 @@ Kind: symbol, since again its a symbol
 Length: none, since doesnt return list
 Operator: function, since its a normal function
 
+Correction: I predicted value `p`; CLISP printed `t`. I misread `symbolp` as
+the symbol `p`. `symbolp` is a yes/no question (the `p` means predicate), and
+`nil` is a symbol, so it answers yes, which Lisp writes as `t`.
+
 ## P06
 Value: nil since () is the same as nil
 Kind: null, since nil is null
@@ -66,6 +70,10 @@ Value: (1,(2,3)) since we have a list of elements
 Kind: cons, since its a list of elements
 Length: 2, since theres 2 list values
 Operator: function, since its a normal function
+
+Correction: I predicted value `(1,(2,3))` and length `2`; CLISP printed
+`(1,2,3)` and `3`. I misread `cons` as wrapping the list `(2 3)` as one element.
+`cons` puts `1` in front of the list, so the result has 3 top-level elements.
 
 ## P08
 Value: empty since if statement evaluates true 
@@ -111,6 +119,11 @@ Kind: integer, since we return a number
 Length: none, since we return a number
 Operator: special-operator, since we have a label head
 
+Correction: I predicted value `2`, kind `integer`, length `none`; CLISP printed
+`(3,2,1)`, `cons`, `3`. I misread `down` as returning a number. Each call puts
+`n` in front of the result of `(down (- n 1))`, and `(down 0)` returns the
+empty list, so `(down 3)` builds the list `(3,2,1)`.
+
 ## P13
 Value: (2,0,1) since we apply mapcar length to all elements
 Kind: cons, since we return a list
@@ -128,6 +141,11 @@ Value: nil since there nothing calling lambda
 Kind: null, since no value returned
 Length: none, since no value returned
 Operator: function, since lambda is a normal function
+
+Correction: I predicted `nil`, `null`, `function`; CLISP printed `#<function>`,
+`function`, `macro`. I misread an uncalled lambda as returning `nil`. Writing
+a lambda creates a function object even when nothing calls it, and `lambda` is
+a macro, not a function.
 
 ## P16
 Value: 6 since this case is a static lookup and binds factor 2
