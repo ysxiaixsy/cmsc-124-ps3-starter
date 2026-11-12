@@ -83,6 +83,12 @@ Kind: cons, since we have a list
 Length: 3, since we have a 3 element list
 Operator: function, since its a normal function
 
+Correction: I predicted `(and,1,3)`, `cons`, `3`, `function`; CLISP printed
+`nil`, `null`, `0`, `special-operator`. I misread `and` as just data in a list.
+`and` checks its arguments left to right and stops at the first false one,
+which is `nil`, so it returns `nil`. `nil` is the empty list, so its kind is
+null and its length is 0. CLISP classifies `and` as a special-operator.
+
 ## P10
 Value: 30 since we call ps3-scale 3 with ps3-rate 10
 Kind: integer, since we return a number

@@ -7,7 +7,7 @@ P05	p	symbol	none	function
 P06	nil	null	0	function
 P07	(1,(2,3))	cons	2	function
 P08	empty	symbol	none	special-operator
-P09	(and,1,3)	cons	3	function
+P09	nil	null	0	special-operator
 P10	30	integer	none	special-operator
 P11	ps3-twice	symbol	none	macro
 P12	2	integer	none	special-operator
