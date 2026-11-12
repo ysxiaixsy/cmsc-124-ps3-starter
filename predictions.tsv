@@ -1,8 +1,8 @@
 id	value	kind	length	operator
 P01	7	integer	none	function
 P02	(+,1,2)	cons	3	special-operator
-P03	nil	null	0	special-operator
-P04	t	symbol	none	special-operator
+P03	nil	null	0	none
+P04	t	symbol	none	none
 P05	p	symbol	none	function
 P06	nil	null	none	special-operator
 P07	(1,(2,3))	cons	2	function

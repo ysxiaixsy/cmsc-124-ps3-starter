@@ -28,11 +28,21 @@ Kind: null, since value is nil
 Length: 0, since null value
 Operator: special-operator, since quote is a special operator
 
+Correction: I predicted operator `special-operator`; CLISP printed `none`.
+I misread `'nil` as a quote form. The `'` in cases.lisp only stores the case
+unevaluated, so the form is plain `nil`. `nil` is an atom because it has no
+parentheses, so it has no head and its operator is `none`.
+
 ## P04
 Value: t since its a bare t
 Kind: symbol, since its only a letter
 Length: none, since it doesnt return a list
 Operator: special-operator, since quote is a special operator
+
+Correction: I predicted operator `special-operator`; CLISP printed `none`.
+I misread `'t` as a quote form. The `'` in cases.lisp only stores the case
+unevaluated, so the form is plain `t`. `t` is an atom because it has no
+parentheses, so it has no head and its operator is `none`.
 
 ## P05
 Value: p since symbolp we treated as symbol p
