@@ -1,7 +1,10 @@
 # Environments and the Toy Evaluator
 
-Replace this paragraph after your checks pass. Trace one form through your own
-`eval-expr`, point to the line that captures the defining environment, say what
-would change if application joined the arguments to the caller's environment
-instead, and explain why the host CLISP needs `funcall` where the toy language
-doesn't.
+## Why the host needs funcall
+
+CLISP keeps 2 separate namespaces, one for variables and one for functions.
+A name in head position is looked up only in the function namespace, so a
+variable that holds a function needs funcall to be called. Our toy language
+keeps every name in one environment, env, so it is a Lisp-1. The last branch
+of eval-expr evaluates the head with eval-expr, which calls lookup on that
+env, so (f 1) finds the closure without funcall.
