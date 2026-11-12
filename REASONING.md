@@ -56,6 +56,11 @@ Kind: null, since nil is null
 Length: none, since doesnt return a list
 Operator: special-operator, since car is a special operator
 
+Correction: I predicted operator `special-operator` and length `none`;
+CLISP printed `function` and `0`. I misread `car` as a special-operator; it is a
+function because it evaluates its argument first. The value is `nil`, which is
+the empty list, so its length is 0, not `none`.
+
 ## P07
 Value: (1,(2,3)) since we have a list of elements
 Kind: cons, since its a list of elements
@@ -68,6 +73,10 @@ Kind: symbol, since its a string
 Length: none, since it doesnt return a list 
 Operator: function, since its a normal if else
 
+Correction: I predicted operator `function`; CLISP printed `special-operator`.
+I misread `if` as a function. `if` is a special-operator because it evaluates
+only one branch, so it can't be a function.
+
 ## P09
 Value: (and,1,3) since we have no operator evaluates as list
 Kind: cons, since we have a list
@@ -79,6 +88,10 @@ Value: 30 since we call ps3-scale 3 with ps3-rate 10
 Kind: integer, since we return a number
 Length: none, since its not a list
 Operator: macro, since its a defun head
+
+Correction: I predicted operator `macro`; CLISP printed `special-operator`.
+I misread `defun` as the head, but the outer head of the form is `progn`,
+which is a special operator. Only the first word after the outer `(` counts.
 
 ## P11
 Value: ps3-twice since its a defun with no caller we return the name
@@ -115,3 +128,7 @@ Value: 6 since this case is a static lookup and binds factor 2
 Kind: integer, since we return a number
 Length: none, since we return a number
 Operator: function, since its a normal function
+
+Correction: I predicted operator `function`; CLISP printed `special-operator`.
+I classified the inner `funcall` instead of the outer head. The outer head is
+`let`, which is a special-operator.
