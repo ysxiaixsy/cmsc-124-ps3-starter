@@ -3,6 +3,10 @@
 
 This repository holds the CLISP prediction corpus and the toy evaluator for
 Problem Set 3. The assignment manual defines the work and the submission rules.
+## The Pair
+
+- Eusef Karl Blancada (evolto06)
+- Joseph Patrick Salomeo (ysxiaixsy)
 
 ## Layout
 
